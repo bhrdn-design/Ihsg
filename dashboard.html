@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - IHSG Screener</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .welcome-section h1 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .welcome-section p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🚀 IHSG Screener</div>
+        <div class="nav-right">
+            <div class="user-menu">
+                <div class="user-avatar" id="user-avatar">U</div>
+                <div>
+                    <div id="user-name" style="font-weight: 600; color: var(--dark);">Loading...</div>
+                    <small id="user-email" style="color: var(--gray);">Loading...</small>
+                </div>
+            </div>
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="welcome-section">
+            <h1>🎉 Selamat Datang di IHSG Screener!</h1>
+            <p>Platform screening saham Indonesia berbasis AI dengan Intelligence Score dan data real-time</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">956</div>
+                    <div class="label">Total Saham IDX</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="number">8+</div>
+                    <div class="label">Metrik Fundamental</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="number">Real-Time</div>
+                    <div class="label">Data Update</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">📊</div>
+                <h3>Stock Database</h3>
+                <p>Screener lengkap 956 saham dengan filter 10+ parameter fundamental</p>
+                <button class="btn btn-primary">Lihat Screener →</button>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🤖</div>
+                <h3>AI Intelligence Score</h3>
+                <p>Score 0-100 berdasarkan 5 pilar: profitabilitas, valuasi, kesehatan keuangan, momentum</p>
+                <button class="btn btn-primary">Cari Saham →</button>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">⭐</div>
+                <h3>Smart Pick</h3>
+                <p>Rekomendasi AI otomatis: Top Opportunity, Multibagger, Technical Momentum, Undervalue</p>
+                <button class="btn btn-primary">Lihat Rekomendasi →</button>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🐋</div>
+                <h3>Bandarmology</h3>
+                <p>Analisa aktivitas bandar & investor besar - deteksi akumulasi/distribusi</p>
+                <button class="btn btn-primary">Analisa Bandar →</button>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">📈</div>
+                <h3>Sentiment Correlation</h3>
+                <p>Korelasi sentiment pasar dengan pergerakan IHSG dari 1.200+ sumber media</p>
+                <button class="btn btn-primary">Lihat Sentiment →</button>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">⭐</div>
+                <h3>My Watchlist</h3>
+                <p>Simpan saham favorit dan pantau P&L real-time dengan entry price tracking</p>
+                <button class="btn btn-primary">Buka Watchlist →</button>
+            </div>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="welcome-section">
+            <h2>🚀 Panduan Memulai</h2>
+            <p style="margin-bottom: 1rem;">Ikuti langkah-langkah berikut untuk memaksimalkan IHSG Screener:</p>
+            <ol style="line-height: 2; margin-left: 1.5rem; color: var(--gray);">
+                <li><strong>Jelajahi Stock Database</strong> - Temukan saham dengan filter fundamental sesuai strategi Anda</li>
+                <li><strong>Cek AI Score</strong> - Lihat intelligence score untuk memahami kualitas fundamental</li>
+                <li><strong>Analisa Smart Pick</strong> - Dapatkan rekomendasi berdasarkan kategori investasi</li>
+                <li><strong>Monitor Bandarmology</strong> - Deteksi pergerakan bandar dan investor institusional</li>
+                <li><strong>Tambah ke Watchlist</strong> - Simpan saham favorit dan pantau real-time</li>
+                <li><strong>Cek Sentiment Market</strong> - Pahami mood pasar sebelum membuat keputusan</li>
+            </ol>
+        </div>
+
+        <!-- Tips -->
+        <div class="welcome-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2>💡 Tips Investasi</h2>
+            <ul style="margin-left: 1.5rem; line-height: 2; margin-top: 1rem;">
+                <li>Selalu lakukan riset fundamental sebelum membeli saham</li>
+                <li>Gunakan AI Score hanya sebagai alat bantu, bukan jaminan profit</li>
+                <li>Kelola risiko dengan baik - jangan masuk semua modal sekaligus</li>
+                <li>Pantau sentiment pasar untuk menghindari FOMO</li>
+                <li>Catat semua transaksi di watchlist untuk analisa P&L</li>
+                <li>Pasar saham mengandung risiko - selalu konsultasi dengan financial advisor</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 IHSG Screener - Platform screening saham Indonesia berbasis AI</p>
+        <p>Bukan nasihat investasi. Data untuk tujuan informasi. DYOR (Do Your Own Research)</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
