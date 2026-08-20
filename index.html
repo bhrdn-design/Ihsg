@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IHSG Screener — Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="background-wrapper">
+        <video class="bg-video" autoplay muted loop playsinline>
+            <source src="https://media.giphy.com/media/26uf1EKQchWvukAQ8/giphy.mp4" type="video/mp4">
+        </video>
+        <div class="bg-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">🚀 IHSG Screener</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#fitur" class="nav-link">Fitur</a></li>
+                <li class="nav-item"><a href="#cara-kerja" class="nav-link">Cara Kerja</a></li>
+                <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Section - Features -->
+        <div class="left-section">
+            <div class="features-content">
+                <h1 class="title">
+                    Analisis Saham IDX Lebih Cerdas
+                </h1>
+                <p class="subtitle">
+                    Platform screening saham Indonesia berbasis AI dengan Intelligence Score, data fundamental real-time dari IDX
+                </p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <div>
+                            <h3>956 Saham IDX</h3>
+                            <p>Data lengkap semua emiten yang terdaftar di Bursa Efek Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🤖</span>
+                        <div>
+                            <h3>AI Intelligence Score</h3>
+                            <p>Analisa otomatis dari 5 pilar fundamental dengan akurasi tinggi</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <div>
+                            <h3>Data Real-Time</h3>
+                            <p>Harga, PER, PBV, ROE diperbarui real-time dari bursa</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <div>
+                            <h3>Smart Pick & Filter</h3>
+                            <p>Screening otomatis dengan 10+ parameter fundamental</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1.2K+</span>
+                        <span class="stat-label">Pengguna Aktif</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9★</span>
+                        <span class="stat-label">Rating Rata-rata</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Kepuasan Pengguna</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section - Login/Register Form -->
+        <div class="right-section">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div class="form-container active" id="login-form">
+                    <div class="form-header">
+                        <h2>Selamat Datang Kembali</h2>
+                        <p>Masuk ke akun kamu untuk screening saham IDX dengan AI</p>
+                    </div>
+
+                    <form id="loginForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input 
+                                type="email" 
+                                id="login-email" 
+                                name="email" 
+                                placeholder="nama@email.com"
+                                required
+                            >
+                            <span class="error-message" id="login-email-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="password-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="login-password" 
+                                    name="password" 
+                                    placeholder="••••••••"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="login-password">
+                                    👁️
+                                </button>
+                            </div>
+                            <span class="error-message" id="login-password-error"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <label class="checkbox">
+                                <input type="checkbox" id="remember-me" name="remember_me">
+                                <span>Ingat saya 30 hari</span>
+                            </label>
+                            <a href="#forgot-password" class="forgot-link">Lupa password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Masuk ke Screener →
+                        </button>
+
+                        <span class="error-message" id="login-error"></span>
+                    </form>
+
+                    <div class="divider">ATAU</div>
+
+                    <button type="button" class="btn btn-google btn-block">
+                        🔐 Lanjutkan dengan Google
+                    </button>
+
+                    <div class="form-footer">
+                        Belum punya akun? 
+                        <button type="button" class="switch-form" data-form="register">
+                            Daftar di sini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div class="form-container" id="register-form">
+                    <div class="form-header">
+                        <h2>Buat Akun Baru</h2>
+                        <p>Daftar sekarang untuk akses screening saham IDX gratis</p>
+                    </div>
+
+                    <form id="registerForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-username">Username</label>
+                            <input 
+                                type="text" 
+                                id="register-username" 
+                                name="username" 
+                                placeholder="username_kamu"
+                                minlength="3"
+                                maxlength="30"
+                                required
+                            >
+                            <span class="error-message" id="register-username-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input 
+                                type="email" 
+                                id="register-email" 
+                                name="email" 
+                                placeholder="nama@email.com"
+                                required
+                            >
+                            <span class="error-message" id="register-email-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <div class="password-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="register-password" 
+                                    name="password" 
+                                    placeholder="Min. 8 karakter"
+                                    minlength="8"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="register-password">
+                                    👁️
+                                </button>
+                            </div>
+                            <span class="error-message" id="register-password-error"></span>
+                            <small class="hint">Min. 8 karakter, harus ada huruf besar, kecil, dan angka</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-confirm">Konfirmasi Password</label>
+                            <div class="password-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="register-confirm" 
+                                    name="confirm_password" 
+                                    placeholder="••••••••"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="register-confirm">
+                                    👁️
+                                </button>
+                            </div>
+                            <span class="error-message" id="register-confirm-error"></span>
+                        </div>
+
+                        <label class="checkbox">
+                            <input type="checkbox" name="terms" required>
+                            <span>Saya setuju dengan Syarat & Ketentuan dan Kebijakan Privasi</span>
+                        </label>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Buat Akun →
+                        </button>
+
+                        <span class="error-message" id="register-error"></span>
+                    </form>
+
+                    <div class="divider">ATAU</div>
+
+                    <button type="button" class="btn btn-google btn-block">
+                        🔐 Daftar dengan Google
+                    </button>
+
+                    <div class="form-footer">
+                        Sudah punya akun? 
+                        <button type="button" class="switch-form" data-form="login">
+                            Login di sini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Forgot Password Form -->
+                <div class="form-container" id="forgot-form">
+                    <div class="form-header">
+                        <h2>Lupa Password?</h2>
+                        <p>Masukkan email kamu. Kami akan kirimkan link reset password</p>
+                    </div>
+
+                    <form id="forgotForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="forgot-email">Email Akun</label>
+                            <input 
+                                type="email" 
+                                id="forgot-email" 
+                                name="email" 
+                                placeholder="nama@email.com"
+                                required
+                            >
+                            <span class="error-message" id="forgot-email-error"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Kirim Link Reset →
+                        </button>
+
+                        <span class="error-message" id="forgot-error"></span>
+                    </form>
+
+                    <div class="form-footer">
+                        <button type="button" class="switch-form" data-form="login">
+                            ← Kembali ke Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Success Message Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <div class="modal-icon success">✓</div>
+            <h3>Sukses!</h3>
+            <p id="success-message"></p>
+            <button type="button" class="btn btn-primary" id="success-close">Lanjutkan</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 IHSG Screener - Platform screening saham Indonesia berbasis AI</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+  </html>
